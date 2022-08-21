@@ -1,4 +1,4 @@
-package springboot.root.hello;
+package study.springboot.api;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(HelloApplication.class);
+		return application.sources(ApiApplication.class);
 	}
 
 }

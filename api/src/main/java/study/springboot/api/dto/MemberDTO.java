@@ -1,4 +1,4 @@
-package study.springboot.hello.dto;
+package study.springboot.api.dto;
 
 public class MemberDTO {
 

@@ -57,9 +57,9 @@ public class GetController {
 	public String getRequestParam2(@RequestParam Map<String, String> param) {
 		StringBuilder sb = new StringBuilder();
 		
-		param.entrySet().forEach(map->{
-			sb.append(map.getKey() + " : " + map.getValue() + "\n");
-		});
+		param.forEach((key, value) ->
+				sb.append(key).append(" : ").append(value).append("\n")
+		);
 		
 		return sb.toString();
 	}

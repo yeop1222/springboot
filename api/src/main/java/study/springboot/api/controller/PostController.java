@@ -22,10 +22,10 @@ public class PostController {
 	@PostMapping(value="/member")
 	public String postMember(@RequestBody Map<String, Object> postData) {
 		StringBuilder sb = new StringBuilder();
-		
-		postData.entrySet().forEach(map -> {
-			sb.append(map.getKey() + " : " + map.getValue() + "\n");
-		});
+
+		postData.forEach((key, value) ->
+				sb.append(key).append(" : ").append(value).append("\n")
+		);
 		
 		return sb.toString();
 	}

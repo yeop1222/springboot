@@ -18,10 +18,10 @@ public class PutController {
 	@PutMapping(value="/member")
 	public String postMember(@RequestBody Map<String, Object> putData) {
 		StringBuilder sb = new StringBuilder();
-		
-		putData.entrySet().forEach(map -> {
-			sb.append(map.getKey() + " : " + map.getValue() + "\n");
-		});
+
+		putData.forEach((key, value) ->
+				sb.append(key).append(" : ").append(value).append("\n")
+		);
 		
 		return sb.toString();
 	}

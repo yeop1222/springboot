@@ -1,35 +1,36 @@
 package study.springboot.test.data.repository;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
 import study.springboot.test.data.entity.Product;
 
-@DataJpaTest
-@AutoConfigureTestDatabase(replace = Replace.NONE)
-public class ProductRepositoryTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * 테스트 DB mariaDB 그대로 사용
+ */
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+public class ProductRepositoryTest {
+	
 	@Autowired
 	private ProductRepository productRepository;
 	
 	@Test
 	void save() {
+		// given
+		Product product = Product.builder()
+				.name("pen")
+				.price(1000)
+				.stock(1234)
+				.build();
 
-		//given
-		Product product = new Product();
-		product.setName("펜");
-		product.setPrice(1000);
-		product.setStock(1000);
-		
-		//when
+		// when
 		Product savedProduct = productRepository.save(product);
-		
-		//then
+
+		// then
 		assertEquals(product.getName(), savedProduct.getName());
 		assertEquals(product.getPrice(), savedProduct.getPrice());
 		assertEquals(product.getStock(), savedProduct.getStock());
